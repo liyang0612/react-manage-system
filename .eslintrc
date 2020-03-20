@@ -10,15 +10,15 @@
       "jsx": true
     }
   },
-  "plugins": ["prettier"],
+  // "plugins": ["prettier"],
 
   "extends": [
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended",
     "eslint:recommended"
   ],
   "rules": {
     "indent": ["error", 2],
-    "semi": ["error", "always"]
+    "semi": ["error", "never"]
   }
 }
