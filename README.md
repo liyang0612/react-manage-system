@@ -1,7 +1,7 @@
 # react-manage-system
 基于 creat-react-app 搭建的后台管理系统。
 
-## Installation
+### Installation
 ``` npm i  或  yarn ```
 ### 运行
 ``` npm run start 或 yarn start ```
@@ -9,3 +9,9 @@
 ``` npm run build 或 yarn build ```
 ### eslint检测
 ``` yarn lint ```
+
+## 代码规范
+基于eslint ，搭配husky、prettier
+
+### eslint 速查表
+

@@ -6,11 +6,11 @@ export default [
     path: '/',
     name: '首页',
     component: Home,
-    routes: []
+    routes: [],
   },
   {
     path: 'login',
     name: '登录',
-    component: Login
-  }
+    component: Login,
+  },
 ]
