@@ -1,21 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import Layout from './layout'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
+import Layout from './layout'
 import reducer from './redux/reducer'
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware))
-
 import * as serviceWorker from './serviceWorker'
+
+const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
 ReactDOM.render(
   <Provider store={store}>
     <Layout />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )
 
 // If you want your app to work offline and load faster, you can change

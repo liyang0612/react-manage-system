@@ -4,8 +4,10 @@ import { getInfo } from '../redux/action/userInfo'
 
 class Home extends React.Component {
   handleClick = () => {
-    this.props.getData()
+    const { getData } = this.props
+    getData()
   }
+
   render() {
     console.log(this.props)
     return (
@@ -16,18 +18,14 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = userInfo => {
-  return {
-    userInfo,
-  }
-}
+const mapStateToProps = userInfo => ({
+  userInfo,
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getData: () => {
-      dispatch(getInfo())
-    },
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  getData: () => {
+    dispatch(getInfo())
+  },
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

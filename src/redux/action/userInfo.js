@@ -1,34 +1,34 @@
 const USER_INFO = 'USER_INFO'
 
-export const saveUserInfo = userInfo => {
-  return {
-    type: USER_INFO,
-    userInfo,
-  }
-}
+export const saveUserInfo = userInfo => ({
+  type: USER_INFO,
+  userInfo,
+})
 
-const fetchSend = subreddit => {
-  return {
-    type: 'FETCH_SEND',
-    subreddit,
-    loading: true,
-  }
-}
+const fetchSend = subreddit => ({
+  type: 'FETCH_SEND',
+  subreddit,
+  loading: true,
+})
 
-const featchCompleted = (subreddit, data) => {
-  return {
-    type: 'FETCH_COMPLETED',
-    subreddit,
-    data,
-    loading: false,
-  }
-}
+const featchCompleted = (subreddit, data) => ({
+  type: 'FETCH_COMPLETED',
+  subreddit,
+  data,
+  loading: false,
+})
 
-export const getInfo = subreddit => {
-  return function(dispatch) {
-    dispatch(fetchSend(subreddit))
-    fetch(' https://cnodejs.org/api/v1/topics').then(res => {
-      dispatch(featchCompleted(subreddit, res))
+export const getInfo = subreddit => async dispatch => {
+  dispatch(fetchSend(subreddit))
+  // const data = await fetch(' https://cnodejs.org/api/v1/topics')
+  // const data = await fetch(' http://localhost:4000/api/getNames')
+  // console.log(data)
+  // dispatch(featchCompleted(subreddit, data))
+  fetch(' http://localhost:4000/api/getNames')
+    .then(res => {
+      console.log(res)
     })
-  }
+    .catch(err => {
+      console.log(err)
+    })
 }
