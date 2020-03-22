@@ -10,6 +10,7 @@
       "jsx": true
     }
   },
+  "parser": "babel-eslint",
   "plugins": ["prettier"],
 
   "extends": [
@@ -18,7 +19,10 @@
     "eslint:recommended"
   ],
   "rules": {
-    "indent": ["error", 2],
-    "semi": ["error", "never"]
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "semi": ["error", "never"],
+    "comma-style": [2, "last"],
+    "no-unused-vars": 1,
+    "react/prop-types": 0
   }
 }

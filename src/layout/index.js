@@ -1,4 +1,5 @@
 import React from 'react'
+import Home from '../views'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 export default class Layout extends React.Component {
@@ -7,7 +8,7 @@ export default class Layout extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            home
+            <Home />
           </Route>
           <Route path="/login">login</Route>
         </Switch>
