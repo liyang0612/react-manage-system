@@ -24,11 +24,9 @@ export const getInfo = subreddit => async dispatch => {
   // const data = await fetch(' http://localhost:4000/api/getNames')
   // console.log(data)
   // dispatch(featchCompleted(subreddit, data))
-  fetch(' http://localhost:4000/api/getNames')
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+  fetch(' http://localhost:4000/api/getNames').then(res => {
+    console.log(res)
+  }).catch(err => {
+    console.log(err)
+  })
 }
