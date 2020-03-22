@@ -1,3 +1,5 @@
+import request from '../../request'
+
 const USER_INFO = 'USER_INFO'
 
 export const saveUserInfo = userInfo => ({
@@ -20,13 +22,8 @@ const featchCompleted = (subreddit, data) => ({
 
 export const getInfo = subreddit => async dispatch => {
   dispatch(fetchSend(subreddit))
-  // const data = await fetch(' https://cnodejs.org/api/v1/topics')
-  // const data = await fetch(' http://localhost:4000/api/getNames')
-  // console.log(data)
+  const data = await request('/api/getName')
+  console.log(data)
+  // const data = request('/graphql')
   // dispatch(featchCompleted(subreddit, data))
-  fetch(' http://localhost:4000/api/getNames').then(res => {
-    console.log(res)
-  }).catch(err => {
-    console.log(err)
-  })
 }
