@@ -3,17 +3,23 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
-import Layout from './layout'
+import ConfigProvider from 'antd/lib/config-provider'
+import zhCN from 'antd/es/locale/zh_CN'
+import MsRouter from './router'
 import reducer from './redux/reducer'
+import 'antd/dist/antd.css'
+import './assets/styles/common.scss'
 
 import * as serviceWorker from './serviceWorker'
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Layout />
-  </Provider>,
+  <ConfigProvider locale={zhCN}>
+    <Provider store={store}>
+      <MsRouter />
+    </Provider>
+  </ConfigProvider>,
   document.getElementById('root'),
 )
 

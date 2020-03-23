@@ -1,3 +1,9 @@
-.test {
-  background-color: red;
+:global(.ant-layout).msLayout {
+  height: 100%;
+}
+.logoIcon {
+  font-size: 26px;
+  padding: 20px 98px 0 25px;
+  float: left;
+  color: #fff !important;
 }

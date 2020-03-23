@@ -1,18 +1,49 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Layout, Menu } from 'antd'
+import { AppleOutlined } from '@ant-design/icons'
 import Home from '../views'
 import styles from './index.module.scss'
 
-export default function Layout() {
+const { Content, Header, Sider } = Layout
+
+export default function BasicLayout () {
   return (
-    <BrowserRouter>
-      <div className={styles.test}>2342</div>
-      <Switch>
-        <Route exact path="/">
+    <Layout className={styles.msLayout}>
+      {/* header 部分 */}
+      <Layout style={{ height: 64, flex: 'none' }}>
+        <Header>
+          <AppleOutlined className={styles.logoIcon} />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+          </Menu>
+        </Header>
+      </Layout>
+      
+      <Layout className={styles['ms-layout']} style={{ flex: 1 }}>
+        {/* 左侧边栏 */}
+        <Sider className={styles.siderVh} width={200}>
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={['2']}
+          >
+            <Menu.Item key="1">option1</Menu.Item>
+            <Menu.Item key="2">option2</Menu.Item>
+            <Menu.Item key="3">option3</Menu.Item>
+            <Menu.Item key="4">option4</Menu.Item>
+          </Menu>
+        </Sider>
+        {/* content部分 */}
+        <Content>
           <Home />
-        </Route>
-        <Route path="/login">login</Route>
-      </Switch>
-    </BrowserRouter>
+        </Content>
+      </Layout>
+    </Layout>
   )
 }

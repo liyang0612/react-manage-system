@@ -1,16 +1,19 @@
-import Home from '../views/index'
-import Login from '../layout/Login'
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Login from '../views/Login'
+import BasicLayout from '../layout'
 
-export default [
-  {
-    path: '/',
-    name: '首页',
-    component: Home,
-    routes: [],
-  },
-  {
-    path: 'login',
-    name: '登录',
-    component: Login,
-  },
-]
+export default function MsRouter () {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <BasicLayout />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  )
+}
