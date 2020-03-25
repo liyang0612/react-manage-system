@@ -1,11 +1,18 @@
 import React from 'react'
-import { Form, Input, Checkbox, Button } from 'antd'
+import { Form, Input, Checkbox, Button, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { login } from '../service'
 import styles from './style.module.scss'
 
-const Login = () => {
-  const onFinish = values => {
-    console.log(values)
+const Login = props => {
+  const onFinish = async values => {
+    const { data } = await login(values)
+    if (data.token) {
+      localStorage.setItem('token', data.token)
+      window.location.href = '/'
+    } else {
+      message.error(data.msg)
+    }
   }
   return (
     <div className={styles.loginWrap}>

@@ -1,13 +1,15 @@
 import fetch from "cross-fetch"
+import { message } from "antd"
 
-const request = async (url, params, options) => {
+const request = async (url, options = {}) => {
   const headers = {
     ...options,
-    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGl5YW5nIiwiX2lkIjoiMSIsImlhdCI6MTU4NDg5MDYyMCwiZXhwIjoxNTg0ODk0MjIwfQ.a78zQnecPRVNRthJMXyJCXz0OuzLRdgwFZbDlBN4vyc"
+    headers: {
+      ...options.headers,
+      Authorization: window.localStorage.getItem('token')
+    }
   }
-  const response = await fetch(url, {
-    headers
-  })
+  const response = await fetch(url, headers)
   const { status, statusText } = response
   
   const data = {
@@ -16,10 +18,15 @@ const request = async (url, params, options) => {
   }
   switch(status) {
     case 401: 
-      alert('请登录')
+      message.error('请先登录')
+      // window.location.href = '/login'
       break
     default: 
-      data.data = await response.json()
+      try {
+        data.data = await response.json()
+      } catch(err) {
+        data.data = {}
+      }
       break
   }
   return data

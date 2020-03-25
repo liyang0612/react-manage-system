@@ -1,26 +1,34 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, Provider } from 'react-redux'
 import { getInfo } from '../redux/action/userInfo'
+import styles from './style.module.scss'
 
-class Home extends React.Component {
+class Home extends React.PureComponent {
+
   handleClick = () => {
-    const { getData } = this.props
-    getData()
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.getData(getInfo())
   }
 
-  render() {
-    console.log(this.props)
+  render () {
+    // eslint-disable-next-line react/destructuring-assignment
     return (
-      <div>
-        <div onClick={this.handleClick}>home page a</div>
+      <div className={styles.spwrap}>
+        <div className={styles.body} onClick={this.handleClick}>home page a</div>
+        <div className={styles.body} onClick={this.handleClick}>home page 2</div>
+        <div className={styles.body} onClick={this.handleClick}>home page 2</div>
+        <div className={styles.body} onClick={this.handleClick}>home page 2</div>
       </div>
     )
   }
 }
 
-const mapStateToProps = userInfo => ({
-  userInfo,
-})
+const mapStateToProps = state => {
+  const { userInfo } = state
+  return {
+    userInfo
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   getData: () => {

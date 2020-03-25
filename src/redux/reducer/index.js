@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import { userInfo } from './userInfo'
+import info from './userInfo'
+import { menu } from './common'
 
 export default combineReducers({
-  userInfo,
+  info,
+  menu
 })

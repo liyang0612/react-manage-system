@@ -1,4 +1,6 @@
-export const userInfo = (state = { test: 234234 }, action) => {
+import { combineReducers } from 'redux'
+
+export const userInfo = (state = { userInfo: {} }, action) => {
   switch (action.type) {
     case 'SAVE_USER_INFO':
       return { ...state, userInfo: action.userInfo }
@@ -8,3 +10,21 @@ export const userInfo = (state = { test: 234234 }, action) => {
       return state
   }
 }
+
+export const coderInfo = (state = { coder: {} }, action) => {
+  switch (action.type) {
+    case 'SAVE_USER_INFO':
+      return { ...state, coder: action.userInfo }
+    case 'FETCH_COMPLETED':
+      return { ...state, coder: action.data }
+    default:
+      return state
+  }
+}
+
+export default combineReducers({
+  userInfo,
+  coderInfo
+})
+
+
