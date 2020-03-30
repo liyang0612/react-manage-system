@@ -1,16 +1,22 @@
 import React from 'react'
-import { connect, Provider } from 'react-redux'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import { getInfo } from '../redux/action/userInfo'
 import styles from './style.module.scss'
 
-class Home extends React.PureComponent {
+interface SettingsProps {
+  dispatch: Dispatch<any>;
+  getData: any
+}
+
+class Home extends React.PureComponent<SettingsProps> {
 
   handleClick = () => {
     // eslint-disable-next-line react/destructuring-assignment
     this.props.getData(getInfo())
   }
 
-  render () {
+  render() {
     // eslint-disable-next-line react/destructuring-assignment
     return (
       <div className={styles.spwrap}>
@@ -23,14 +29,14 @@ class Home extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   const { userInfo } = state
   return {
     userInfo
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): any => ({
   getData: () => {
     dispatch(getInfo())
   },

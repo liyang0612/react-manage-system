@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Layout, Menu } from 'antd'
 import { AppleOutlined } from '@ant-design/icons'
-import Home from '../views'
+import Home from '../views/index.tsx'
 import { getMenuData } from '../redux/action/common'
 import styles from './index.module.scss'
 
 const { Content, Header, Sider } = Layout
-class BasicLayout extends React.PureComponent {
+class BasicLayout extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props

@@ -1,4 +1,4 @@
-import Home from '../views/index'
+import Home from '../views/index.tsx'
 import Login from '../views/Login'
 
 export default [

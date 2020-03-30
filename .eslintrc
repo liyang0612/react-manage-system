@@ -25,13 +25,28 @@
     "no-unused-vars": 1,
     "react/prop-types": 0,
     "arrow-parens": ["error", "as-needed"],
-    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }], // jsx语法能出现在该类型的文件
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }], // jsx语法能出现在该类型的文件
     "react/prefer-stateless-function": 1, // 该组件是否应该是纯函数
     "react/button-has-type": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "import/prefer-default-export": 0,
     "react/self-closing-comp": 0,
-    "react/no-redundant-should-component-update": 0
+    "react/no-redundant-should-component-update": 0,
+    "import/extensions": 0,
+    "import/no-unresolved": [
+      2,
+      {
+          "ignore": ["^src/"]
+      },
+    ],
+  },
+  "settings": {
+    // support import modules from TypeScript files in JavaScript files
+    "import/resolver": { 
+      "node": { 
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"] 
+      }
+    },
   }
 }

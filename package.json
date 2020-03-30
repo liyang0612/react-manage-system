@@ -64,6 +64,7 @@
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "2.3.4",
     "ts-pnp": "1.1.5",
+    "typescript": "^3.8.3",
     "url-loader": "2.3.0",
     "webpack": "4.41.5",
     "webpack-dev-server": "3.10.2",
@@ -162,11 +163,15 @@
     ]
   },
   "devDependencies": {
+    "@types/react-redux": "^7.1.7",
+    "awesome-typescript-loader": "^5.2.1",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-import-resolver-webpack": "^0.12.1",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prettier": "1.19.1",
+    "source-map-loader": "^0.2.4",
     "webpack-bundle-analyzer": "^3.6.1"
   }
 }

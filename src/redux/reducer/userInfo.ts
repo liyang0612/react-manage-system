@@ -1,6 +1,21 @@
 import { combineReducers } from 'redux'
 
-export const userInfo = (state = { userInfo: {} }, action) => {
+interface userInfoObj {
+  id?: Number;
+  name?: String;
+}
+
+interface coderObj {
+  id?: Number;
+  name?: String;
+}
+
+interface userInfoState {
+  userInfo?: userInfoObj;
+  coder?: coderObj
+}
+
+export const userInfo = (state: userInfoState = { userInfo: {} }, action: any) => {
   switch (action.type) {
     case 'SAVE_USER_INFO':
       return { ...state, userInfo: action.userInfo }
@@ -11,7 +26,7 @@ export const userInfo = (state = { userInfo: {} }, action) => {
   }
 }
 
-export const coderInfo = (state = { coder: {} }, action) => {
+export const coderInfo = (state: userInfoState = { coder: {} }, action: any) => {
   switch (action.type) {
     case 'SAVE_USER_INFO':
       return { ...state, coder: action.userInfo }
