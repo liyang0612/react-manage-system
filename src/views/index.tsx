@@ -12,12 +12,10 @@ interface SettingsProps {
 class Home extends React.PureComponent<SettingsProps> {
 
   handleClick = () => {
-    // eslint-disable-next-line react/destructuring-assignment
     this.props.getData(getInfo())
   }
 
   render() {
-    // eslint-disable-next-line react/destructuring-assignment
     return (
       <div className={styles.spwrap}>
         <div className={styles.body} onClick={this.handleClick}>home page a</div>

@@ -4,8 +4,17 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { login } from '../service'
 import styles from './style.module.scss'
 
-const Login = props => {
-  const onFinish = async values => {
+interface LoginProps {
+
+}
+
+interface LoginForm {
+  username: String;
+  password: String;
+}
+
+const Login: React.ReactNode = (props: LoginProps) => {
+  const onFinish = async (values: LoginForm) => {
     const { data } = await login(values)
     if (data.token) {
       localStorage.setItem('token', data.token)
@@ -52,7 +61,7 @@ const Login = props => {
             <Button type="primary" htmlType="submit" className="login-form-button">
               登 录
             </Button>
-          &nbsp;&nbsp; 或者
+            <span>&nbsp;&nbsp; 或者</span>
             <a href="www">  注册</a>
           </Form.Item>
         </Form>
