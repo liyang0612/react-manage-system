@@ -15,7 +15,7 @@ export const saveUserInfo = (userInfo: userInfoAction) => ({
 })
 
 export const getInfo = (subreddit?: any) => async (dispatch: Dispatch<any>) => {
-  const { data }: req.ResponseData = await getCoderName()
+  const { data }: req.ResponseType = await getCoderName()
   dispatch({
     type: 'FETCH_COMPLETED',
     subreddit,

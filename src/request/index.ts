@@ -1,7 +1,13 @@
 import fetch from "cross-fetch"
 import { message } from "antd"
 
-const request = async (url, options = {}) => {
+export interface ResponseType {
+  status: number;
+  statusText: string;
+  data?: any
+}
+
+const request = async (url, options: any = {}) => {
   const headers = {
     ...options,
     headers: {
@@ -12,7 +18,7 @@ const request = async (url, options = {}) => {
   const response = await fetch(url, headers)
   const { status, statusText } = response
   
-  const data = {
+  const data: ResponseType = {
     status,
     statusText,
   }
