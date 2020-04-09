@@ -1,2 +1,2 @@
-declare module '*.scss'{/* empty */}
-declare module '*.sass'{/* empty */}
+declare module '*.scss';
+declare module '*.sass';
