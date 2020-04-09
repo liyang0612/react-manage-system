@@ -55,7 +55,6 @@ class BasicLayout extends React.Component<BasicLayoutPropsType> {
   render() {
     const { menu = {}, config = [], history } = this.props
     const { menuData = [], slideMenu = [], currentId } = menu
-
     return (
       <Layout className={styles.msLayout}>
         {/* header 部分 */}
@@ -98,7 +97,11 @@ class BasicLayout extends React.Component<BasicLayoutPropsType> {
                   </Route>
                 ))
               }
-              <Redirect to='/home'></Redirect>
+              <Redirect exact from='/' to='/home'></Redirect>
+              <Route path="*">
+                404 
+                { history.location.hash }
+              </Route>
             </Switch>
           </Content>
         </Layout>
