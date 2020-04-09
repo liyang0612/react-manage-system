@@ -5,14 +5,15 @@ import { getInfo } from '../redux/action/userInfo'
 import styles from './style.module.scss'
 
 interface SettingsProps {
-  dispatch: Dispatch<any>;
-  getData: any
+  dispatch?: Dispatch<any>;
+  getData?: any;
+  history?: any;
 }
 
 class Home extends React.PureComponent<SettingsProps> {
 
   handleClick = () => {
-    this.props.getData(getInfo())
+    // getData(getInfo())
   }
 
   render() {

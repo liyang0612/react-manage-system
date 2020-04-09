@@ -1,10 +1,9 @@
 import fetch from "cross-fetch"
 import { message } from "antd"
 
-export interface ResponseType {
-  status: number;
-  statusText: string;
-  data?: any
+export interface ResponseTypes {
+  data?: any;
+  msg?: string;
 }
 
 const request = async (url, options: any = {}) => {
@@ -16,22 +15,21 @@ const request = async (url, options: any = {}) => {
     }
   }
   const response = await fetch(url, headers)
-  const { status, statusText } = response
-  
-  const data: ResponseType = {
-    status,
-    statusText,
-  }
+  const { status } = response
+  let data: ResponseTypes = {}
   switch(status) {
     case 401: 
       message.error('请先登录')
-      // window.location.href = '/login'
+      window.location.href = '/login'
+      break
+    case 500:
+      message.error('服务器错误，请稍后重试')
       break
     default: 
       try {
-        data.data = await response.json()
+        data = await response.json()
       } catch(err) {
-        data.data = {}
+        data = {}
       }
       break
   }

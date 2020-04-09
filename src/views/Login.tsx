@@ -4,8 +4,9 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { login } from '../service'
 import styles from './style.module.scss'
 
-interface LoginProps {
-
+interface LoginResopenProps {
+  token?: string;
+  msg?: string
 }
 
 interface LoginForm {
@@ -13,9 +14,9 @@ interface LoginForm {
   password: String;
 }
 
-const Login: React.ReactNode = (props: LoginProps) => {
+const Login: React.ReactNode = () => {
   const onFinish = async (values: LoginForm) => {
-    const { data } = await login(values)
+    const data: LoginResopenProps = await login(values)
     if (data.token) {
       localStorage.setItem('token', data.token)
       window.location.href = '/'

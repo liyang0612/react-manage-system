@@ -1,6 +1,5 @@
 import { Dispatch } from 'redux'
 import { getCoderName } from 'src/service'
-import * as req from 'src/request'
 
 const USER_INFO = 'USER_INFO'
 
@@ -15,7 +14,7 @@ export const saveUserInfo = (userInfo: userInfoAction) => ({
 })
 
 export const getInfo = (subreddit?: any) => async (dispatch: Dispatch<any>) => {
-  const { data }: req.ResponseType = await getCoderName()
+  const data = await getCoderName()
   dispatch({
     type: 'FETCH_COMPLETED',
     subreddit,

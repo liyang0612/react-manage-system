@@ -1,9 +1,16 @@
+import { ResponseTypes } from 'src/request'
 import { getMenu } from '../../service'
+import * as types from '../type'
 
 export const getMenuData = () => (async dispatch => {
-  const { data } = await getMenu()
+  const { data }: ResponseTypes = await getMenu()
   dispatch({
-    type: 'GET_MENU_SUCCESS',
+    type: types.GET_MENU_SUCCESS,
     data
   })
+})
+
+export const getCurrentMenu = (id: string) => ({
+  type: types.GET_CURRENT_MENU,
+  data: id
 })

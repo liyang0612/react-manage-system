@@ -1,12 +1,20 @@
-import Home from '../views/index.tsx'
 import Login from '../views/Login'
+import Home from '../views'
+import Setting from '../views/Setting'
 
 export default [
   {
     path: '/',
     name: '首页',
-    component: Home,
-    routes: [],
+    routes: [{
+      path: '/home',
+      name: '首页',
+      component: Home,
+    }, {
+      path: '/setting',
+      name: '设置',
+      component: Setting,
+    }],
   },
   {
     path: 'login',
