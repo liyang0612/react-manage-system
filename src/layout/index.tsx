@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch, Link } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import { AppleOutlined } from '@ant-design/icons'
 import { getMenuData, getCurrentMenu } from '../redux/action/common'
@@ -19,7 +19,7 @@ interface BasicLayoutPropsType {
 const RenderMenu = menu => {
   return menu.map(item => (
     <Menu.Item key={item.id}>
-      { item.name }
+      <Link to={item.path}>{ item.name }</Link>
     </Menu.Item>
   ))
 }
@@ -88,7 +88,7 @@ class BasicLayout extends React.Component<BasicLayoutPropsType> {
             </Menu>
           </Sider>
           {/* content部分 */}
-          <Content>
+          <Content className={styles.smContent}>
             <Switch>
               {
                 config[0].routes.map(item => (

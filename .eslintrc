@@ -18,6 +18,9 @@
     "plugin:react/recommended",
     "eslint:recommended"
   ],
+  "plugins": [
+    "react-hooks"
+  ],
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "semi": ["error", "never"],
@@ -34,7 +37,8 @@
     "react/self-closing-comp": 0,
     "react/no-redundant-should-component-update": 0,
     "import/extensions": 0,
-
+    "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+    "react-hooks/exhaustive-deps": "warn", // 检查 effect 的依赖
     "import/no-unresolved": [
       2,
       {

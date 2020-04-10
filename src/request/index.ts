@@ -19,8 +19,10 @@ const request = async (url, options: any = {}) => {
   let data: ResponseTypes = {}
   switch(status) {
     case 401: 
-      message.error('请先登录')
-      window.location.href = '/login'
+      message.error('请先登录', 2, () => {
+        window.location.href = `/login?form=${encodeURIComponent(window.location.href)}`
+      })
+      localStorage.clear()
       break
     case 500:
       message.error('服务器错误，请稍后重试')

@@ -17,9 +17,11 @@ interface LoginForm {
 const Login: React.ReactNode = () => {
   const onFinish = async (values: LoginForm) => {
     const data: LoginResopenProps = await login(values)
+    const { search } = window.location
+    const fromUrl = search && search.substr(6)
     if (data.token) {
       localStorage.setItem('token', data.token)
-      window.location.href = '/'
+      window.location.href = decodeURIComponent(fromUrl) || '/'
     } else {
       message.error(data.msg)
     }
