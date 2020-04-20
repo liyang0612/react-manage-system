@@ -7,7 +7,8 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "legacyDecorators": true
     }
   },
   "parser": "babel-eslint",
@@ -26,7 +27,9 @@
     "semi": ["error", "never"],
     "comma-style": [2, "last"],
     "no-unused-vars": 1,
+    "no-param-reassign": 1,
     "react/prop-types": 0,
+    "class-methods-use-this": 0,
     "arrow-parens": ["error", "as-needed"],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx", ".ts"] }],  // jsx语法能出现在该类型的文件
     "react/prefer-stateless-function": 1, // 该组件是否应该是纯函数

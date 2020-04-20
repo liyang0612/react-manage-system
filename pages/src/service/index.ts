@@ -7,6 +7,12 @@ export const getCoderName = async () => {
 
 export const getMenu = async () => {
   const data = await request('/api/getMenu')
+  if (!data.data) {
+    return {
+      data: [],
+      msg: 'fail'
+    }
+  }
   return data
 }
 

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
@@ -11,15 +12,58 @@ interface SettingsProps {
   history?: any;
 }
 
-class Home extends React.PureComponent<SettingsProps> {
+function newConnect(map?: any, dis?: any) {
+  const func: any = connect(map, dis)
+  return func
+}
+
+const mapStateToProps = (state: any): any => {
+  const { userInfo } = state
+  return {
+    userInfo
+  }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<any>): any => ({
+  getData: () => {
+    dispatch(getInfo())
+  },
+})
+
+@newConnect(mapStateToProps, mapDispatchToProps)
+class Home extends React.Component<SettingsProps> {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      ajaxData: 1,
+    }
+  }
+
+  // eslint-disable-next-line react/no-deprecated
+  componentWillMount() {
+    const func = new Promise(function(resolve, reject) {
+      resolve()
+    })
+    func.then(() => {
+      console.log('ajax')
+      this.setState({
+        ajaxData: 2
+      })
+    })
+    console.log('willMount')
+  }
 
   handleClick = () => {
-    // getData(getInfo())
+    const { getData } = this.props
+    getData(getInfo)
   }
 
   render() {
+    const { ajaxData }: any = this.state
+    console.log('render', ajaxData)
     return (
-      <div className="wrap" style={{ paddingTop: 50 }}>
+      <div onClick={this.handleClick} className="wrap" style={{ paddingTop: 50 }}>
         <Timeline mode="alternate">
           <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>
           <Timeline.Item color="green">Solve initial network problems 2015-09-01</Timeline.Item>
@@ -39,17 +83,4 @@ class Home extends React.PureComponent<SettingsProps> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  const { userInfo } = state
-  return {
-    userInfo
-  }
-}
-
-const mapDispatchToProps = (dispatch: Dispatch<any>): any => ({
-  getData: () => {
-    dispatch(getInfo())
-  },
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default Home
