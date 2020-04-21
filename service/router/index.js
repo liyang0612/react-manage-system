@@ -1,12 +1,34 @@
 const router = require('koa-router')()
+const md5 = require('md5')
 const { sign } = require('jsonwebtoken')
 const querySql = require('../connection').querySql
 
+const ErrorMsg = {
+  status: 200,
+  message: '参数不合法'
+}
+
+router.post('/register', async function(ctx) {
+  const data = ctx.request.body
+  const username = data.username
+  const password = data.password
+  const againPassword = data.againPassword
+  if (!username || !password) {
+    ctx.body = ErrorMsg
+    return
+  } else if(password !== againPassword) {
+    ErrorMsg.message = '两次输入密码不一致'
+    ctx.body = ErrorMsg
+    return
+  }
+  const result = await querySql(`INSERT INTO mysql_test.user VALUES(${null}, ${username}, ${password})`)
+  ctx.body = result
+})
+
 router.post('/login', async function(ctx) {
   const data = ctx.request.body
-  console.log(data)
   if (!data.username || !data.password) {
-    ctx.body = '参数不合法'
+    ctx.body = ErrorMsg
     return
   }
 
@@ -30,7 +52,7 @@ router.post('/login', async function(ctx) {
   }
 })
 
-router.get('/api/getName', async function(ctx, err) {
+router.get('/api/getName', async function(ctx) {
   let data = null
   ctx.set('Content-type','application/json')
 
@@ -42,7 +64,7 @@ router.get('/api/getName', async function(ctx, err) {
 
 })
 
-router.get('/api/getMenu', async function(ctx, err) {
+router.get('/api/getMenu', async function(ctx) {
   ctx.body = {
     msg: 'ok',
     data: [

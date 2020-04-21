@@ -40,7 +40,7 @@ app.use(async function (ctx, next) {
 })
 // 调用jwt中间件
 app.use(jwt({ secret: 'my-secret' }).unless({
-  path:[/^\/login/]
+  path:[/^\/login|^\/register/]
 }))
 
 
@@ -53,6 +53,6 @@ server.applyMiddleware({
   app
 })
 
-app.listen({ port: 4000 }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`),
-);
+app.server = server
+
+module.exports = app
